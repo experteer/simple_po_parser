@@ -42,3 +42,10 @@ msgstr[1] ""
 "msgstr 1 multiline 1\n"
 "msgstr 1 line 2\n"
 msgstr[2] "msgstr 2"
+
+# translator-comment
+#. extract
+#: reference1
+#~ msgctxt "Context"
+#~ msgid "msgid"
+#~ msgstr "translated"

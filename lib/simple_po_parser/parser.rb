@@ -23,11 +23,12 @@ module SimplePoParser
       begin
         lines
       rescue ParserError => pe
-        puts "Parsing error!"
-        puts "#{pe.message}"
-        puts "Backtrace:\n#{pe.backtrace.select{|i| i =~ /lib\/poparser/}.join("\n")}"
-        puts "\nResult up to error: '#{@result}'"
-        exit
+        error_msg = "SimplePoParser::ParserError"
+        error_msg += pe.message
+        error_msg += "\nParseing result before error: '#{@result}'"
+        error_msg += "\nSimplePoParser filtered backtrace: SimplePoParser::ParserError"
+        backtrace = "#{pe.backtrace.select{|i| i =~ /lib\/simple_po_parser/}.join("\n\tfrom ")}"
+        raise ParserError, error_msg, backtrace
       end
       @result
     end
@@ -274,7 +275,7 @@ module SimplePoParser
           skip_whitespace
           unless end_of_line
             err_msg = "There should be only whitespace until the end of line"
-            err_msg += "after the double quote character of a message text."
+            err_msg += " after the double quote character of a message text."
             raise PoSyntaxError.new(err_msg)
           end
           text
