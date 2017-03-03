@@ -7,6 +7,7 @@ module SimplePoParser
 
     def parse_file(path)
       File.open(path, 'r').each_line("\n\n") do |block|
+        block.strip! # dont parse empty blocks
         @messages << parse_block(block) if block != ''
       end
       @messages
