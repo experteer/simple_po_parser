@@ -1,5 +1,9 @@
 # Simple Po Parser
 
+[![Build Status](https://travis-ci.org/experteer/simple_po_parser.svg?branch=master)](https://travis-ci.org/experteer/simple_po_parser)
+[![Coverage Status](https://img.shields.io/coveralls/experteer/simple_po_parser.svg)](https://coveralls.io/github/experteer/simple_po_parser)
+[![Gem Version](https://badge.fury.io/rb/simple_po_parser.svg)](https://badge.fury.io/rb/simple_po_parser)
+
 This is a simple PO file to ruby hash parser, which complies with [GNU PO file specification](https://www.gnu.org/software/gettext/manual/html_node/PO-Files.html). Tested with the msgcat (GNU gettext-tools) 0.18.3 tool.
 
 ## Hash format
