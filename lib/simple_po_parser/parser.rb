@@ -153,7 +153,7 @@ module SimplePoParser
           skip_whitespace
           text = message_line
           add_result(:msgid_plural, text)
-          message_multiline(:msgid) if text.empty?
+          message_multiline(:msgid_plural) if text.empty?
           true
         else
           false
