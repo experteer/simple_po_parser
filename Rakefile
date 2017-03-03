@@ -62,7 +62,4 @@ namespace :parser do
     printer = RubyProf::FlatPrinter.new(result)
     printer.print(STDOUT)
   end
-
-
-
 end
