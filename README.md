@@ -9,23 +9,24 @@ This is a simple PO file to ruby hash parser, which complies with [GNU PO file s
 ## Hash format
 
 A PO message is parsed into a hash with meaningful keys for each type of line.
-The values are always arrays of strings.
-Each string is representing one line of content in the PO file.
+ The values are strings, if only one line of such content was parsed,
+ otherthise it's an array of strings. Each string is
+ representing one line of content in the PO file.
 
 ```ruby
 {
-  :translator_comment => [""],
-  :extracted_comment => [""],
-  :reference => [""],
-  :flag => [""],
-  :previous_msgctxt => [""], # msgctxt of the message used for the fuzzy translation
-  :previous_msgid => [""], # msgid of the messaged used for the fuzzy translation
-  :previous_msgid_plural => [""],
-  :msgctxt => [""],
-  :msgid => [""],
-  :msgid_plural => [""],
-  :msgstr => [""], # for singular messages
-  "msgstr[N]" => [""] # for plural messages, there N is the plural number starting from 0
+  :translator_comment => "" || ["", ""...],
+  :extracted_comment => "" || ["", ""...],
+  :reference => "" || ["", ""...],
+  :flag => "" || ["", ""...],
+  :previous_msgctxt => "" || ["", ""...],# msgctxt of the message used for the fuzzy translation
+  :previous_msgid => "" || ["", ""...], # msgid of the messaged used for the fuzzy translation
+  :previous_msgid_plural => "" || ["", ""...],
+  :msgctxt => "" || ["", ""...],
+  :msgid => "" || ["", ""...],
+  :msgid_plural => "" || ["", ""...],
+  :msgstr => "" || ["", ""...], # for singular messages
+  "msgstr[N]" => "" || ["", ""...] # for plural messages, there N is the plural number starting from 0
 }
 ```
 
