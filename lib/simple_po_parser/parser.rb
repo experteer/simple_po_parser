@@ -342,9 +342,13 @@ module SimplePoParser
     # creates an array if the given key already has a result
     def add_result(key, text)
       if @result[key]
-        @result[key].push(text)
+        if @result[key].is_a? Array
+          @result[key].push(text)
+        else
+          @result[key] = [@result[key], text]
+        end
       else
-        @result[key] = [text]
+        @result[key] = text
       end
     end
 
