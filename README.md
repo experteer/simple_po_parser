@@ -19,8 +19,8 @@ SimplePoParser.parse_message(message) # parses a single PO message and returns a
 ### Hash format
 
 A PO message is parsed into a hash with meaningful keys for each type of line.
- The values are strings, if only one line of such content was parsed,
- otherthise it's an array of strings. Each string is
+ The values are strings if only one line of such content was parsed,
+ otherwise it's an array of strings. Each string is
  representing one line of content in the PO file.
 
 ```ruby
