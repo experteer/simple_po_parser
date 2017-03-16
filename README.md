@@ -6,11 +6,21 @@
 
 This is a simple PO file to ruby hash parser, which complies with [GNU PO file specification](https://www.gnu.org/software/gettext/manual/html_node/PO-Files.html). Tested with the msgcat (GNU gettext-tools) 0.18.3 tool.
 
-## Hash format
+## Usage
+
+The parser can be used in two ways:
+
+```ruby
+SimplePoParser.parse(file_path) # parses a PO file and returns array of hashes
+
+SimplePoParser.parse_message(message) # parses a single PO message and returns a hash
+```
+
+### Hash format
 
 A PO message is parsed into a hash with meaningful keys for each type of line.
- The values are strings, if only one line of such content was parsed,
- otherthise it's an array of strings. Each string is
+ The values are strings if only one line of such content was parsed,
+ otherwise it's an array of strings. Each string is
  representing one line of content in the PO file.
 
 ```ruby
@@ -30,6 +40,6 @@ A PO message is parsed into a hash with meaningful keys for each type of line.
 }
 ```
 
-### License
+## License
 
 License: [MIT](LICENSE.txt) - Copyright (c) 2017 Dennis-Florian Herr @Experteer GmbH
