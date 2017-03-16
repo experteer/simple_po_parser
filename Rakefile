@@ -54,8 +54,8 @@ namespace :parser do
   desc "Show ruby-prof profiler for spec/fixtures/complex_entry.po"
   task "profile_parser" do
     require 'ruby-prof'
-    RubyProf.start
     po_message = File.read(File.expand_path("spec/simple_po_parser/fixtures/complex_entry.po", __dir__))
+    RubyProf.start
     SimplePoParser.parse_message(po_message)
     result = RubyProf.stop
 
