@@ -164,7 +164,7 @@ module SimplePoParser
       end
     end
 
-    # matches the msgstr singular line
+    # parses the msgstr singular line
     #
     # msgstr is required in singular translations
     def msgstr
@@ -184,7 +184,13 @@ module SimplePoParser
       end
     end
 
-
+    # parses the msgstr plural lines
+    #
+    # msgstr plural lines are used when there is msgid_plural.
+    # They have the format msgstr[N] where N is incremental number starting from zero representing
+    # the plural number as specified in the headers "Plural-Forms" entry. Most languages, like the
+    # English language only have two plural forms (singular and plural),
+    # but there are languages with more plurals
     def msgstr_plural(num = 0)
       begin
         msgstr_key = @scanner.scan(/msgstr\[\d\]/) # matches 'msgstr[0]' to 'msgstr[9]'
@@ -207,6 +213,12 @@ module SimplePoParser
       end
     end
 
+    # parses previous comments, which provide additional information on fuzzy matching
+    #
+    # previous comments are:
+    # * #| msgctxt
+    # * #| msgid
+    # * #| msgid_plural
     def previous_comments
       begin
         # next part must be msgctxt, msgid or msgid_plural
@@ -234,6 +246,7 @@ module SimplePoParser
       end
     end
 
+    # parses the multiline messages of the previous comment lines
     def previous_multiline(key)
       begin
         # scan multilines until no further multiline is hit
@@ -249,6 +262,10 @@ module SimplePoParser
       end
     end
 
+    # parses a multiline message
+    #
+    # multiline messages are indicated by an empty content as first line and the next line
+    # starting with the double quote character
     def message_multiline(key)
       begin
         skip_whitespace
@@ -290,7 +307,8 @@ module SimplePoParser
       end
     end
 
-    # used to parse all obsolete lines. An obsolete message may only contain obsolete entries
+    # parses all obsolete lines.
+    # An obsolete message may only contain obsolete lines
     def obsoletes
       if @scanner.scan(/#~/)
         skip_whitespace
@@ -333,6 +351,8 @@ module SimplePoParser
     end
 
     # returns true if the scanner is at beginning of next line or end of string
+    #
+    # @return [Boolean] true if scanner at beginning of line or eos
     def end_of_line
       @scanner.scan(/\n/)
       @scanner.eos? || @scanner.bol?
@@ -351,7 +371,5 @@ module SimplePoParser
         @result[key] = text
       end
     end
-
   end
-
 end
