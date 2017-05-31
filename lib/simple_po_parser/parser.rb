@@ -1,5 +1,5 @@
 module SimplePoParser
-  # FastParser directly using Rubys powerful StringScanner (strscan)
+  # Fast parser directly using Rubys powerful StringScanner (strscan)
   #
   # Important notes about StringScanner.scan:
   # * scan will return nil if there is no match. Using the regex * (zero or more) quantifier will
@@ -8,10 +8,9 @@ module SimplePoParser
   # * the start of line anchor ^ is obsolete as scan will only match start of line.
   # * rubys regex is by default in single-line mode, therefore scan will only match until
   #  the next newline is hit (unless multi-line mode is explicitly enabled)
-  module Parser
+  class Parser
     require_relative 'error'
     require 'strscan'
-    extend self
 
     # parse a single message of the PO format.
     #

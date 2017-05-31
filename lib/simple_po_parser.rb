@@ -14,7 +14,7 @@ module SimplePoParser
 
     # parses a single message.
     def parse_message(message)
-      Parser.parse(message)
+      Parser.new.parse(message)
     end
   end
 

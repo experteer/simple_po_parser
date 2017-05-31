@@ -15,7 +15,7 @@ module SimplePoParser
 
   private
     def parse_block(block)
-      Parser.parse(block)
+      Parser.new.parse(block)
     end
   end
 end
