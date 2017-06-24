@@ -6,6 +6,8 @@
 
 This is a simple PO file to ruby hash parser, which complies with [GNU PO file specification](https://www.gnu.org/software/gettext/manual/html_node/PO-Files.html). Tested with the msgcat (GNU gettext-tools) 0.18.3 tool.
 
+The parser is probably as optimized for speed as possible with pure ruby, while parsing all different PO types into seperate keys.
+
 ## Usage
 
 The parser can be used in two ways:
