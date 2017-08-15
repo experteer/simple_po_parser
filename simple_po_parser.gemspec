@@ -21,6 +21,4 @@ Gem::Specification.new do |spec|
   # Development deps
   spec.add_development_dependency "bundler", ">= 0"
   spec.add_development_dependency "rake", ">= 0"
-  # geminabox release
-  spec.add_development_dependency 'geminabox-release', "0.2.1"
 end

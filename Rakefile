@@ -3,12 +3,9 @@
 require 'rubygems'
 require 'rake'
 require 'rspec/core/rake_task'
+require 'bundler/gem_tasks'
 
-RSpec::Core::RakeTask.new(:spec)
 task :default => :spec
-
-require 'geminabox-release'
-GeminaboxRelease.patch(:use_config => true, :remove_release => false)
 
 desc "Generate a random po file to \"test/benchmark.po\". Takes optional rake args for number of entries"
 task 'generate_random_pofile', :messages, :obsoletes do |t, args|
