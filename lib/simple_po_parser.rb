@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 require 'simple_po_parser/error'
 require 'simple_po_parser/parser'
 require 'simple_po_parser/tokenizer'

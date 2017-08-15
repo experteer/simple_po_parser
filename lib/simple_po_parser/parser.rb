@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 module SimplePoParser
   # Fast parser directly using Rubys powerful StringScanner (strscan)
   #

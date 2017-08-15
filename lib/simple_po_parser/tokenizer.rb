@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 module SimplePoParser
   # Split a PO file into single PO message entities (a message is seperated by two newline)
   class Tokenizer
