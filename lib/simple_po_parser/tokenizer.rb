@@ -8,7 +8,13 @@ module SimplePoParser
     end
 
     def parse_file(path)
-      File.open(path, 'r').each_line("\n\n") do |block|
+      file = File.open(path, "r")
+      if(file.gets =~ /\r$/)
+        # detected windows line ending
+        file.close
+        file = File.open(path, "rt")
+      end
+      file.each_line("\n\n") do |block|
         block.strip! # dont parse empty blocks
         @messages << parse_block(block) if block != ''
       end

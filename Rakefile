@@ -20,11 +20,11 @@ namespace :parser do
   require 'benchmark'
   require 'simple_po_parser'
 
-  desc "Benchmark of 10 full PoParser runs of test/benchmark.po"
+  desc "Benchmark of 100 full PoParser runs of test/benchmark.po"
   task "benchmark" do
     pofile = File.expand_path("test/benchmark.po", __dir__)
     Benchmark.bmbm do |x|
-      x.report("Parser:") {10.times { SimplePoParser.parse(pofile) }}
+      x.report("Parser:") {100.times { SimplePoParser.parse(pofile) }}
     end
   end
 
