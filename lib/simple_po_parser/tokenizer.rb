@@ -13,6 +13,8 @@ module SimplePoParser
         # detected windows line ending
         file.close
         file = File.open(path, "rt")
+      else
+        file.rewind
       end
       file.each_line("\n\n") do |block|
         block.strip! # dont parse empty blocks
