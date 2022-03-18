@@ -264,6 +264,11 @@ module SimplePoParser
     end
 
     # parses a multiline message
+    #
+    # Multiline messages are often indicated by an empty content as first line,
+    # followed by more lines starting with the double quote character.
+    #
+    # However, the first line can also contain content, according to the PO file standard.
     def message_multiline(key)
       begin
         skip_whitespace

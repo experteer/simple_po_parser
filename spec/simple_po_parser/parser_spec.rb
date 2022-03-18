@@ -30,8 +30,8 @@ describe SimplePoParser::Parser do
 
   it "parses the multiline entry as expected" do
     expected_result = {
-      :msgid => ["", "By default, the follow-up check is done via the subject of an email. This ", "setting lets you add more fields for which the follow-up check will be ", "executed."],
-      :msgstr => ["默认情况下，通过电子邮件的主题进行跟进检查。这个设置允许你增加更多的字段执行", "跟进检查。"]
+      :msgid => ["", "multiline string ", "with empty first line ", "and trailing spaces"],
+      :msgstr => ["multiline string", "with non-empty first line", "and no trailing spaces"],
     }
     expect(SimplePoParser::Parser.new.parse(po_multiline_message)).to eq(expected_result)
   end
