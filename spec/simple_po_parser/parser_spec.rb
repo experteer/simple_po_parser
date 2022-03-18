@@ -4,6 +4,7 @@ describe SimplePoParser::Parser do
   let (:po_header) { File.read(File.expand_path("fixtures/header.po", __dir__))}
   let(:po_complex_message) { File.read(File.expand_path("fixtures/complex_entry.po", __dir__))}
   let(:po_simple_message) { File.read(File.expand_path("fixtures/simple_entry.po", __dir__))}
+  let(:po_multiline_message) { File.read(File.expand_path("fixtures/multiline.po", __dir__))}
 
   it "parses the PO header" do
     expected_result = {
@@ -25,6 +26,14 @@ describe SimplePoParser::Parser do
       :msgstr => "translated"
     }
     expect(SimplePoParser::Parser.new.parse(po_simple_message)).to eq(expected_result)
+  end
+
+  it "parses the multiline entry as expected" do
+    expected_result = {
+      :msgid => ["", "By default, the follow-up check is done via the subject of an email. This ", "setting lets you add more fields for which the follow-up check will be ", "executed."],
+      :msgstr => ["默认情况下，通过电子邮件的主题进行跟进检查。这个设置允许你增加更多的字段执行", "跟进检查。"]
+    }
+    expect(SimplePoParser::Parser.new.parse(po_multiline_message)).to eq(expected_result)
   end
 
   it "parses the complex entry as expected" do

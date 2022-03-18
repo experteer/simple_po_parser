@@ -1,0 +1,6 @@
+msgid ""
+"By default, the follow-up check is done via the subject of an email. This "
+"setting lets you add more fields for which the follow-up check will be "
+"executed."
+msgstr "默认情况下，通过电子邮件的主题进行跟进检查。这个设置允许你增加更多的字段执行"
+"跟进检查。"

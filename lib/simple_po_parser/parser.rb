@@ -109,7 +109,7 @@ module SimplePoParser
           skip_whitespace
           text = message_line
           add_result(:msgctxt, text)
-          message_multiline(:msgctxt) if text.empty?
+          message_multiline(:msgctxt) if @scanner.peek(1) == '"'
         end
         msgid
       rescue PoSyntaxError => pe
@@ -127,7 +127,7 @@ module SimplePoParser
           skip_whitespace
           text = message_line
           add_result(:msgid, text)
-          message_multiline(:msgid) if text.empty?
+          message_multiline(:msgid) if @scanner.peek(1) == '"'
           if msgid_plural
             msgstr_plural
           else
@@ -155,7 +155,7 @@ module SimplePoParser
           skip_whitespace
           text = message_line
           add_result(:msgid_plural, text)
-          message_multiline(:msgid_plural) if text.empty?
+          message_multiline(:msgid_plural) if @scanner.peek(1) == '"'
           true
         else
           false
@@ -174,7 +174,7 @@ module SimplePoParser
           skip_whitespace
           text = message_line
           add_result(:msgstr, text)
-          message_multiline(:msgstr) if text.empty?
+          message_multiline(:msgstr) if @scanner.peek(1) == '"'
           skip_whitespace
           raise PoSyntaxError, "Unexpected content after expected message end #{@scanner.peek(10).inspect}" unless @scanner.eos?
         else
@@ -202,7 +202,7 @@ module SimplePoParser
           skip_whitespace
           text = message_line
           add_result(msgstr_key, text)
-          message_multiline(msgstr_key) if text.empty?
+          message_multiline(msgstr_key) if @scanner.peek(1) == '"'
           msgstr_plural(num+1)
         elsif num == 0 # and msgstr_key was false
           raise PoSyntaxError, "Plural message without msgstr[0] is not allowed. Line started unexpectedly with #{@scanner.peek(10).inspect}."
@@ -264,9 +264,6 @@ module SimplePoParser
     end
 
     # parses a multiline message
-    #
-    # multiline messages are indicated by an empty content as first line and the next line
-    # starting with the double quote character
     def message_multiline(key)
       begin
         skip_whitespace
