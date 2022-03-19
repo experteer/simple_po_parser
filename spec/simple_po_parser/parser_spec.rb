@@ -32,6 +32,7 @@ describe SimplePoParser::Parser do
     expected_result = {
       :msgid => ["", "multiline string ", "with empty first line ", "and trailing spaces"],
       :msgstr => ["multiline string", "with non-empty first line", "and no trailing spaces"],
+      :previous_msgid => ["multiline\\n", "previous messageid", "with non-empty first line"],
     }
     expect(SimplePoParser::Parser.new.parse(po_multiline_message)).to eq(expected_result)
   end

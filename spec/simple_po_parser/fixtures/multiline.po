@@ -1,3 +1,6 @@
+#| msgid "multiline\n"
+#|"previous messageid"
+#|"with non-empty first line"
 msgid ""
 "multiline string "
 "with empty first line "
