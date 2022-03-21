@@ -238,11 +238,7 @@ module SimplePoParser
           skip_whitespace
           text = message_line
           add_result(key, text)
-          pos = @scanner.pos
-          if @scanner.scan(/#\|\p{Blank}*"/)
-            @scanner.pos = pos
-            previous_multiline(key)
-          end
+          previous_multiline(key) if @scanner.match?(/#\|\p{Blank}*"/)
         else
           raise PoSyntaxError, "Previous comments must start with '#| msg'. #{@scanner.peek(10).inspect} unknown."
         end
