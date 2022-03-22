@@ -20,15 +20,15 @@ namespace :parser do
   require 'benchmark'
   require 'simple_po_parser'
 
-  desc "Benchmark of 100 full PoParser runs of test/benchmark.po"
+  desc "Benchmark of 1000 full PoParser runs of test/benchmark.po"
   task "benchmark" do
     pofile = File.expand_path("test/benchmark.po", __dir__)
     Benchmark.bmbm do |x|
-      x.report("Parser:") {100.times { SimplePoParser.parse(pofile) }}
+      x.report("Parser:") {1000.times { SimplePoParser.parse(pofile) }}
     end
   end
 
-  desc "Generate 5 random PO files with 100 to 500 messages and benchmark each full PoParser run"
+  desc "Generate 5 random PO files with 1000 to 5000 messages and benchmark each full PoParser run"
   task 'five_random_po_full' do
     include Benchmark
     require_relative 'spec/utils/random_pofile_generator'
@@ -37,7 +37,7 @@ namespace :parser do
       total = nil
       total_length = 0
       for i in 0..5 do
-        length = (Random.new.rand * 400.0 + 100).to_i
+        length = (Random.new.rand * 4000.0 + 1000).to_i
         total_length += length
         puts "Benchmarking file of length #{length}"
         SimplePoParser::RandomPoFileGenerator.generate_file(pofile, length)
