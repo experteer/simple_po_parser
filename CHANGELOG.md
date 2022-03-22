@@ -1,6 +1,9 @@
 Changelog
 =============
 
+## Version 1.1.6
+  * fixes parsing of multiline strings that have content on the first line. Fixes issue #3, added via PR #4 by @mgruner
+
 ## Version 1.1.5
  * added support for windows CRLF line endings. Fixes issue #2
  * Note: CRLF support is enabled if the first line ends in a CRLF and reduces performance by about 50%. Performance for files only using \n is not affected. Files not using \r\n in the first line but somewhere else in the file might trigger errors.
