@@ -4,6 +4,7 @@ describe SimplePoParser::Parser do
   let (:po_header) { File.read(File.expand_path("fixtures/header.po", __dir__))}
   let(:po_complex_message) { File.read(File.expand_path("fixtures/complex_entry.po", __dir__))}
   let(:po_simple_message) { File.read(File.expand_path("fixtures/simple_entry.po", __dir__))}
+  let(:po_multiline_message) { File.read(File.expand_path("fixtures/multiline.po", __dir__))}
 
   it "parses the PO header" do
     expected_result = {
@@ -25,6 +26,15 @@ describe SimplePoParser::Parser do
       :msgstr => "translated"
     }
     expect(SimplePoParser::Parser.new.parse(po_simple_message)).to eq(expected_result)
+  end
+
+  it "parses the multiline entry as expected" do
+    expected_result = {
+      :msgid => ["", "multiline string ", "with empty first line ", "and trailing spaces"],
+      :msgstr => ["multiline string", "with non-empty first line", "and no trailing spaces"],
+      :previous_msgid => ["multiline\\n", "previous messageid", "with non-empty first line"],
+    }
+    expect(SimplePoParser::Parser.new.parse(po_multiline_message)).to eq(expected_result)
   end
 
   it "parses the complex entry as expected" do
