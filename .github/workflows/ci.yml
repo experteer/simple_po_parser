@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: 
+      - master
+    tags:
+      - v*
+  pull_request:
+    branches: 
+      -master
+
+# using setup-ruby. See https://github.com/ruby/setup-ruby
+jobs:
+  rspec:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        ruby: ['2.5', '2.6', '2.7', '3.0', '3.1']
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby }}
+        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+    
+    - name: Run rspec
+      run: bundle exec rspec spec
+    
+    - name: Coveralls
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
