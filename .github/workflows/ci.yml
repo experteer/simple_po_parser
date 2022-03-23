@@ -9,6 +9,7 @@ on:
   pull_request:
     branches: 
       -master
+  workflow_dispatch:
 
 # using setup-ruby. See https://github.com/ruby/setup-ruby
 jobs:
