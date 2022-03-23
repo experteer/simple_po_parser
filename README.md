@@ -1,6 +1,6 @@
 # Simple Po Parser
 
-[![Build Status](https://travis-ci.org/experteer/simple_po_parser.svg?branch=master)](https://travis-ci.org/experteer/simple_po_parser)
+[![CI](https://github.com/experteer/simple_po_parser/actions/workflows/ci.yml/badge.svg)](https://github.com/experteer/simple_po_parser/actions/workflows/ci.yml)
 [![Coverage Status](https://img.shields.io/coveralls/experteer/simple_po_parser.svg)](https://coveralls.io/github/experteer/simple_po_parser)
 [![Gem Version](https://badge.fury.io/rb/simple_po_parser.svg)](https://badge.fury.io/rb/simple_po_parser)
 
